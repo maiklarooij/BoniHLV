@@ -1,7 +1,6 @@
 Flask
 requests
 pybase64
-json
 gunicorn
 psycopg2
 pandas
