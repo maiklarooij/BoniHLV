@@ -7,11 +7,15 @@
 
     <body style='text-align: center; margin-top: 2em;'>
         <img src='static/boni.jpg'>
-        {% for cluster in clusters %}
-            <p>Cluster {{ cluster }}: {{ clusters[cluster] }}</p>
-        {% endfor %}
+        <div style='margin-top: 2em;'>
+            {% for cluster in clusters %}
+                <h3>{{ cluster }}: {{ clusters[cluster]['desc'] }}</h3>
+                <p>Aantal colli: {{ clusters[cluster]['colli'] }}</p>
+                <p>Totale vultijd: {{ clusters[cluster]['time']['hours'] }}:{{ clusters[cluster]['time']['minutes'] }} uur </p>
+            {% endfor %}
 
-        <p>Totaal: {{ total }}</p>
+            <h2>Totaal: {{ grandtotal }}</h2>
+        </div>
     </body>
     
 </html>

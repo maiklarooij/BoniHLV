@@ -28,13 +28,18 @@ def calculate():
     
     header_list = ['Hoofdgroep', 'Omschrijving2', 'Boe', 'Bah', 'Nummer', 'Omschrijving', 'Colli']
     df = pd.read_csv(file, names=header_list).drop_duplicates()
+    clusters = {'Cluster 1': {'numbers': [19, 29, 35], 'desc': 'Frisdrank, bier en houdbare melk', 'time': 90},
+                'Cluster 2': {'numbers': [1, 2, 15, 16, 18], 'desc': 'Koek, snoep, koffie en thee', 'time': 60}, 
+                'Cluster 3': {'numbers': [5, 14, 23, 24, 25, 26, 28, 30], 'desc': 'Cosmetica, dierenvoeding en wasmiddel', 'time': 60},
+                'Cluster 4': {'numbers': [3, 4, 9, 10, 11, 12, 36], 'desc': 'Potgroente, sauzen, conimex en eieren', 'time': 60},
+                'Cluster 5': {'numbers': [7, 8, 13, 17, 20, 49], 'desc': 'Chips, wijn, ontbijt en afbakbrood', 'time': 60}}
 
-    cluster1 = df[df['Nummer'].isin([19, 29, 35])]['Colli'].map(lambda x: int(x)).sum()
-    cluster2 = df[df['Nummer'].isin([1, 2, 15, 16, 18])]['Colli'].map(lambda x: int(x)).sum()
-    cluster3 = df[df['Nummer'].isin([5, 14, 23, 24, 25, 26, 28, 30])]['Colli'].map(lambda x: int(x)).sum()
-    cluster4 = df[df['Nummer'].isin([3, 4, 9, 10, 11, 12, 36])]['Colli'].map(lambda x: int(x)).sum()
-    cluster5 = df[df['Nummer'].isin([7, 8, 13, 17, 20, 49])]['Colli'].map(lambda x: int(x)).sum()
-    total = cluster1 + cluster2 + cluster3 + cluster4 + cluster5
-    clusters = {1: cluster1, 2: cluster2, 3: cluster3, 4: cluster4, 5: cluster5}
+    totals = {}
+    for cluster in clusters:
+        colli = df[df['Nummer'].isin(clusters[cluster]['numbers'])]['Colli'].map(lambda x: int(x)).sum()
+        time = {'hours': "{:02d}".format(int(colli / clusters[cluster]['time'])), 
+                'minutes': "{:02d}".format(int(((colli % clusters[cluster]['time']) / 1.5))) if cluster == 'Cluster 1' else "{:02d}".format(colli % clusters[cluster]['time']) }
+        totals[cluster] = {'colli': colli, 'time': time, 'desc': clusters[cluster]['desc']}
 
-    return render_template("result.html", clusters=clusters, total=total)
+    grandtotal = sum([totals[cluster]['colli'] for cluster in totals])
+    return render_template("result.html", clusters=totals, grandtotal=grandtotal)
