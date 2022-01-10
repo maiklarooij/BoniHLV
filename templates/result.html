@@ -1,0 +1,17 @@
+<html>
+    <head>
+        <title>Boni colli calculator</title>
+        <link rel="icon" type="image/x-icon" href="/static/favicon.jpg">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    </head>
+
+    <body style='text-align: center; margin-top: 2em;'>
+        <img src='static/boni.jpg'>
+        {% for cluster in clusters %}
+            <p>Cluster {{ cluster }}: {{ clusters[cluster] }}</p>
+        {% endfor %}
+
+        <p>Totaal: {{ total }}</p>
+    </body>
+    
+</html>

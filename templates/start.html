@@ -1,0 +1,19 @@
+<html>
+    <head>
+        <title>Boni colli calculator</title>
+        <link rel="icon" type="image/x-icon" href="/static/favicon.jpg">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    </head>
+
+    <body style='text-align: center; margin-top: 2em;'>
+        <img src='static/boni.jpg'>
+
+        <form style='padding: 2em' action="/calculate" method='POST' enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="exampleFormControlFile1">Selecteer het geëxporteerde .csv bestand:</label>
+                <input style='text-align-last: center;' type="file" class="form-control-file" name='bonicolli'>
+            </div>
+            <button type="submit" class="btn btn-danger">Berekenen!</button>
+        </form>
+    </body>
+</html>

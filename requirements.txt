@@ -1,0 +1,7 @@
+Flask
+requests
+base64
+json
+gunicorn
+psycopg2
+pandas
