@@ -8,7 +8,7 @@ import pandas as pd
 
 # Configure application
 app = Flask(__name__)
-app.config["SECRET_KEY"] = b'Ko5\xc8\x13w\x8b\x8c\xc8\xa9\xa5\xf0P\x92"\x12'
+app.config["SECRET_KEY"] = b'5\x95@j\xd7Z}\xd6\xfd\xafV\xfbU\xd6/\xf5'
 
 # Configure session to use filesystem (instead of signed cookies)
 app.config["SESSION_FILE_DIR"] = mkdtemp()
