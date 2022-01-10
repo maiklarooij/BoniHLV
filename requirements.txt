@@ -1,6 +1,6 @@
 Flask
 requests
-base64
+pybase64
 json
 gunicorn
 psycopg2
